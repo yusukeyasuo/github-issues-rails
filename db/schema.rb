@@ -10,6 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_01_08_122855) do
+
+  create_table "issues", force: :cascade do |t|
+    t.integer "repository_id", null: false
+    t.string "title"
+    t.string "body"
+    t.string "html_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["repository_id"], name: "index_issues_on_repository_id"
+  end
+
+  create_table "repositories", force: :cascade do |t|
+    t.string "owner"
+    t.string "repository"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

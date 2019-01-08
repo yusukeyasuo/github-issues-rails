@@ -1,0 +1,34 @@
+<h3><%= @repository.owner %>/<%= @repository.repository %></h3>
+
+<div class="row">
+  <%= link_to repository_issues_path(@repository.id), class: 'nav-link' do %>
+    <button type="button" class="btn btn-primary">Reload</button>
+  <% end %>
+</div>
+<br />
+<div class="row">
+  <% if @issues.present? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">title</th>
+          <th scope="col">body</th>
+          <th scope="col">html_url</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @issues.each do |i| %>
+          <tr>
+            <td><%= i.id %></td>
+            <td><%= i.title %></td>
+            <td><%= i.body %></td>
+            <td><%= i.html_url %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>イシューが見つかりません. Reloadしてください.</p>
+  <% end %>
+</div>

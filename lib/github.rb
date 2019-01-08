@@ -7,7 +7,7 @@ class Github
     res = Net::HTTP.get(URI.parse("#{repo_url}?page=#{page}&per_page=#{per_page}"))
     issues = JSON.parse(res)
     issues.each do |i|
-      res_csv += "#{i['title'].slice(0, 30)},#{i['body'].slice(0, 50).gsub(/(\r\n?|\n)/," ")},#{i['comments_url']}\n"
+      res_csv += "#{i['title'].slice(0, 30)}','#{i['body'].slice(0, 50).gsub(/(\r\n?|\n)/," ")}','#{i['comments_url']}\n"
     end
 
     res_csv

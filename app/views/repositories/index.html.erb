@@ -1,0 +1,40 @@
+<div class="row">
+  <%= link_to new_repository_path, class: 'nav-link' do %>
+    <button type="button" class="btn btn-primary">New</button>
+  <% end %>
+</div>
+<br />
+<div class="row">
+  <% if @repositories.present? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">onwer</th>
+          <th scope="col">repository</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @repositories.each do |r| %>
+          <tr>
+            <td>
+              <%= link_to repository_path(r.id) do %>
+                <%= r.id %>
+              <% end %>
+            </td>
+            <td><%= r.owner %></td>
+            <td><%= r.repository %></td>
+            <td>
+              <%= link_to repository_path(r.id), method: :delete, data: { confirm: '削除してよろしいですか？' } do %>
+                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>リポジトリを登録してください.</p>
+  <% end %>
+</div>
