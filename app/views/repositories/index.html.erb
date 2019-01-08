@@ -18,7 +18,11 @@
       <tbody>
         <% @repositories.each do |r| %>
           <tr>
-            <td><%= r.id %></th>
+            <td>
+              <%= link_to repository_path(r.id) do %>
+                <%= r.id %>
+              <% end %>
+            </td>
             <td><%= r.owner %></td>
             <td><%= r.repository %></td>
             <td>
