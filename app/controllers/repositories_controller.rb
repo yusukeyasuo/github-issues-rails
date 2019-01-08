@@ -35,7 +35,7 @@ class RepositoriesController < ApplicationController
     issues = []
     issue_strs = csv.split("\n")
     issue_strs.reverse.each do |issue_str|
-      i = issue_str.split(',')
+      i = issue_str.split("','")
       if i.size == 3
         issues << Issue.new(
           repository_id: params[:id],
